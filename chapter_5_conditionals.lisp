@@ -59,10 +59,89 @@
 
 
 
-(defun emp (x)
-  (cond ((null x) 'empty)
-	(t 'not-empty)
+(defun emp3 (x)
+  (cond ((equal (first x) 'good) (cons 'great (rest x)))
+	 ((equal (first x) 'bad) (cons 'awful (rest x)))
+        (t (cons 'very x))
 	)
   )
+
+
+(print (emp3 '(long day)))
+
+
+(defun make-odd (x)
+  (cond 
+    ((not (oddp x)) (+ x 1))
+    (t x)
+    )
+  )
+
+
+
+(defun constrain (x max min)
+  (cond
+    ((< x min) min)
+    (( > x max) max)
+    (t x)
+    )
+  )
+
+
+
+(defun constrain-if (x max min)
+  (if (< x min) min (if (> x max) max x))
+  
+  )
+(print (constrain-if 3 -50 50))
+
+(print (equal (constrain 3 -50 50) (constrain-if 3 -50 50)))
+
+
+(defun firstzero (list)
+  (cond
+    ((equal (first list) '0) 'first)
+    ((equal (second list) '0) 'second)
+    ((equal (third list) '0) 'third)
+    )
+  )
+
+
+
+(print (firstzero '(3 0 4)))
+
+
+(defun cycle (inp)
+  (+ (mod inp 99) 1)
+  )
+
+
+(print (cycle 98))
+
+
+
+(defun howcompute (a b r)
+  (cond
+    ((equal (+ a b) r) 'sum-of )
+    ((equal (* a b) r) 'product-of)
+    (t 'beats-me)
+    )
+  )
+
+
+(trace howcompute)
+(untrace equal)
+(print (howcompute 3 4 7))
+
+
+(defun geq (a b)
+  (or (> a b) (= a b))
+  )
+
+(trace geq)
+
+(geq 2 3)
+
+
 
 
