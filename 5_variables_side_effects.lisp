@@ -25,3 +25,28 @@
   (let ((q (+ p 5)))
     (print q)))
 
+;;5.6
+
+(defun throw-die ()
+  (+ (random 6) 1))
+
+(defun throw-dice ()
+  (let ((first-throw (throw-die))
+        (second-throw (throw-die)))
+    (list first-throw second-throw)))
+
+(print (throw-dice))
+
+
+(defun SNAKE-EYES-P (li)
+  (if (and (eq (first li) '1) (eq (second li) '1)) T nil)
+  )
+
+(defun BOXCARS-P (li)
+  (if (and (eq (first li) '6) (eq (second li) '6)) T nil)
+  )
+
+
+
+(print (BOXCARS-P '(1 1)))
+(print (eq 'a 'a))
